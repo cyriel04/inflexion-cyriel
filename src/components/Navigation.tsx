@@ -34,7 +34,7 @@ const Navigation = ({ focusedBackground = false }) => {
 	return (
 		<StyledNavigation focusedBackground={focusedBackground}>
 			<div className="navigation-content">
-				<div style={{ display: 'flex' }}>
+				<div style={{ display: 'flex', cursor: 'default' }}>
 					<SvgIcon>{<Logo />}</SvgIcon>
 					<Typography className="navigation-title">VANDAL INDUSTRIES</Typography>
 				</div>
@@ -70,16 +70,21 @@ const StyledNavigation = styled('div')<any>(({ focusedBackground }: any) => ({
 	position: 'relative',
 	margin: '68px auto',
 	zIndex: 1,
-	background: focusedBackground && '#ffffff',
-	padding: '20px 24px',
+	background: focusedBackground && '#ffffffb6',
 	width: '980px',
+
 	borderRadius: '16px',
+
+	boxShadow: focusedBackground && '0px 7px 23px rgba(0, 0, 0, 0.05)',
+	backdropFilter: focusedBackground && 'blur(10.5px)',
 
 	'@media (max-width: 600px)': {
 		display: 'none'
 	},
 
 	'.navigation-content': {
+		padding: '20px 24px',
+
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',

@@ -21,11 +21,9 @@ const Footer = () => {
 export default Footer
 
 const StyledFooter = styled('div')(() => ({
-	// bottom: 0,
-	// position: 'absolute',
-	width: '100%',
-	marginBottom: '53px',
-	padding: '64px 34px',
+	padding: '64px',
+	margin: '0px auto',
+	width: '980px',
 
 	'@media (max-width: 600px)': {
 		display: 'none'
@@ -33,7 +31,7 @@ const StyledFooter = styled('div')(() => ({
 
 	'.footer-content': {
 		display: 'flex',
-		justifyContent: 'space-evenly',
+		justifyContent: 'space-between',
 		alignItems: 'center',
 		color: '#A0AEC0',
 
@@ -44,9 +42,13 @@ const StyledFooter = styled('div')(() => ({
 		'.footer-links': {
 			display: 'inline-flex',
 			flexDirection: 'row',
+
 			[`.${linkClasses.root}`]: {
-				marginRight: '52px',
 				color: '#A0AEC0',
+
+				'&:not(:last-of-type)': {
+					marginRight: '52px'
+				},
 
 				[`&:not(:hover)`]: {
 					textDecoration: 'none'

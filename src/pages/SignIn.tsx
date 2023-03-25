@@ -148,7 +148,7 @@ const SignIn = () => {
 						</FormControl>
 						<IFButton sx={{ width: '100%', margin: '36px 0px 22px 0px' }}>SIGN UP</IFButton>
 
-						<Typography variant="body2">
+						<Typography variant="body2" sx={{ color: '#A0AEC0' }}>
 							Already have an account?{' '}
 							<Link
 								href="#"

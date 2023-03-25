@@ -1,7 +1,12 @@
-import React from 'react'
+import Footer from '../components/Footer'
 
 const Dashboard = () => {
-	return <div>Dashboard</div>
+	return (
+		<div>
+			Dashboard
+			<Footer />
+		</div>
+	)
 }
 
 export default Dashboard

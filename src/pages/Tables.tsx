@@ -1,5 +1,11 @@
+import Footer from '../components/Footer'
+
 const Tables = () => {
-	return <div>Tables</div>
+	return (
+		<div>
+			<Footer />
+		</div>
+	)
 }
 
 export default Tables
