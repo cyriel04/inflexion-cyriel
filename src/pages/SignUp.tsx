@@ -1,95 +1,155 @@
-import { FormControl, FormControlLabel, Link, styled, Typography } from '@mui/material'
+import {
+	Card,
+	cardClasses,
+	CardContent,
+	cardContentClasses,
+	FormControl,
+	FormControlLabel,
+	IconButton,
+	iconButtonClasses,
+	styled,
+	touchRippleClasses,
+	Typography
+} from '@mui/material'
+import { Apple, FacebookOutlined, Google } from '@mui/icons-material'
 
 import Footer from '../components/Footer'
 import Navigation from '../components/Navigation'
-import Chakra from '../assets/chakra.svg'
-import IFTextField from '../components/IFTextField'
-import IFSwitch from '../components/IFSwitch'
 import IFButton from '../components/IFButton'
+import Banner from '../assets/banner.svg'
+import IFSwitch from '../components/IFSwitch'
+import IFTextField from '../components/IFTextField'
+import IFLink from '../components/IFLink'
+
+const loginOptions = [
+	{
+		label: 'facebook',
+		icon: FacebookOutlined
+	},
+	{
+		label: 'apple',
+		icon: Apple
+	},
+	{
+		label: 'google',
+		icon: Google
+	}
+]
 
 const SignUp = () => {
 	return (
-		<StyledSignUp>
-			<Navigation focusedBackground={true} />
-			<div className="content" style={{ height: '500px' }}>
-				<img src={Chakra} alt="banner" style={{}} />
-				<Typography variant="h5" sx={{ marginBottom: '8px', fontWeight: 700, fontSize: '32px', color: '#4FD1C5' }}>
-					Welcome Back
+		<StyledSignup>
+			<Navigation focusedBackground={false} />
+			<div className="banner-container">
+				<img src={Banner} alt="banner" className="banner" />
+			</div>
+			<div className="content">
+				<Typography variant="h5" sx={{ marginBottom: '10px', fontWeight: 700 }}>
+					Welcome!
 				</Typography>
-				<Typography
-					variant="body2"
-					sx={{ width: '330px', fontSize: '14px', fontWeight: 700, color: '#A0AEC0', marginBottom: '36px' }}
-				>
-					Enter your email and password to sign in
+				<Typography variant="body2" sx={{ width: '330px', display: 'inline-flex', justifyContent: 'center' }}>
+					Use these awesome forms to login or create new account in your project for free.
 				</Typography>
-				<br />
-				<IFTextField label="Email" />
-				<IFTextField label="Password" />
 
-				<FormControl sx={{ display: 'flex' }}>
-					<FormControlLabel control={<IFSwitch />} label="Remember me" sx={{ marginLeft: 'unset' }} />
-				</FormControl>
+				<Card>
+					<CardContent>
+						<Typography sx={{ fontSize: 18, marginBottom: '22px', fontWeight: 700 }} gutterBottom>
+							Register with
+						</Typography>
+						<div className="options">
+							{loginOptions.map(({ icon }) => {
+								const OptionIcon: React.ElementType<any> = icon
+								return (
+									<IconButton>
+										<OptionIcon />
+									</IconButton>
+								)
+							})}
+						</div>
 
-				<IFButton sx={{ width: '350px', margin: '36px 0px 22px 0px' }}>SIGN IN</IFButton>
+						<Typography variant="h5" component="div" sx={{ margin: '20px 0px 16px 0px', color: '#A0AEC0' }}>
+							or
+						</Typography>
 
-				<Typography variant="body2" sx={{ color: '#A0AEC0' }}>
-					Don't have an account?{' '}
-					<Link
-						href="#"
-						sx={{
-							color: '#4FD1C5',
-							fontWeight: 700,
-							[`&:not(:hover)`]: {
-								textDecoration: 'none'
-							}
-						}}
-					>
-						Sign up
-					</Link>
-				</Typography>
+						<IFTextField label="Name" placeholder="Your full name" />
+						<IFTextField label="Email" placeholder="Your email address" />
+						<IFTextField label="Password" placeholder="Your password" />
+
+						<FormControl sx={{ display: 'flex' }}>
+							<FormControlLabel control={<IFSwitch />} label="Remember me" sx={{ marginLeft: 'unset' }} />
+						</FormControl>
+
+						<IFButton sx={{ width: '100%', margin: '36px 0px 22px 0px' }}>SIGN UP</IFButton>
+
+						<Typography variant="body2" sx={{ color: '#A0AEC0' }}>
+							Already have an account?{' '}
+							<IFLink
+								href="/signin"
+								sx={{
+									color: '#4FD1C5'
+								}}
+							>
+								Sign in
+							</IFLink>
+						</Typography>
+					</CardContent>
+				</Card>
 			</div>
 			<Footer />
-		</StyledSignUp>
+		</StyledSignup>
 	)
 }
 
 export default SignUp
 
-const StyledSignUp = styled('div')<any>(() => ({
-	'.content': {
+const StyledSignup = styled('div')(() => ({
+	textAlign: 'center',
+	'.banner-container, .options': {
 		display: 'flex',
-		flexDirection: 'column',
+		justifyContent: 'center',
 
-		'@media (min-width: 600px)': {
-			width: `calc(100% - 454px)`,
-			margin: '0 auto'
-		},
-		'@media (max-width: 600px)': {
-			margin: '0 auto',
-			width: '100%',
-			alignItems: 'center',
-			textAlign: 'center'
+		'.banner': {
+			objectFit: 'cover',
+			position: 'absolute',
+			top: '24px',
+			width: `calc(100% - 48px)`,
+			height: '520px',
+			zIndex: -1,
+			borderRadius: '16px'
 		}
 	},
-
-	'@media (max-width: 600px)': {
-		marginTop: '200px'
+	'.content': {
+		display: 'inline-block',
+		color: '#fff'
 	},
 
-	'& img': {
-		objectFit: 'cover',
-		position: 'absolute',
-		top: 0,
+	[`.${cardClasses.root}`]: {
+		minWidth: 460,
+		width: '460px',
+		marginTop: '66px',
+		borderRadius: '16px',
 
-		width: '42%',
-		height: '100%',
+		[`.${cardContentClasses.root}`]: {
+			paddingBottom: '46px !important',
+			padding: '46px 52px',
 
-		zIndex: -1,
-		borderBottomLeftRadius: '16px',
-		right: 0,
+			[`.${iconButtonClasses.root}`]: {
+				color: '#2D3748',
+				borderRadius: '4px',
+				border: '1px solid #E2E8F0',
+				width: '75px',
+				height: '75px',
+				'&:not(:last-of-type)': {
+					marginRight: '16px'
+				},
+				[`.${touchRippleClasses.root}`]: {
+					display: 'none'
+				},
 
-		'@media (max-width: 1000px)': {
-			display: 'none'
+				'& svg': {
+					fontSize: '32px'
+				}
+			}
 		}
 	}
 }))

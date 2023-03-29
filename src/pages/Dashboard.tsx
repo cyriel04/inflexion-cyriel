@@ -1,17 +1,23 @@
 import {
 	Breadcrumbs,
 	Card,
+	cardClasses,
 	CardContent,
+	cardContentClasses,
 	Divider,
 	Grid,
 	IconButton,
+	iconButtonClasses,
 	InputAdornment,
-	Link,
 	List,
+	listClasses,
 	ListItem,
 	ListItemButton,
+	listItemButtonClasses,
 	ListItemIcon,
+	listItemIconClasses,
 	ListItemText,
+	styled,
 	touchRippleClasses,
 	Typography
 } from '@mui/material'
@@ -32,6 +38,7 @@ import IFLogo from '../components/IFLogo'
 import IFTextField from '../components/IFTextField'
 import IFButton from '../components/IFButton'
 import Docs from '../assets/docs-bg.svg'
+import IFLink from '../components/IFLink'
 
 const dashboardList = [
 	{
@@ -65,60 +72,18 @@ const dashboardList = [
 ]
 const Dashboard = () => {
 	return (
-		<div>
-			<div
-				className="sidebar"
-				style={{
-					background: '#F8F9FA',
-					width: '266px',
-					position: 'fixed',
-					left: 0,
-					top: 0,
-					height: '100vh',
-					overflow: 'auto'
-				}}
-			>
-				<div
-					style={{
-						padding: '44px 26px 0px 42px'
-					}}
-				>
+		<StyledDashboard>
+			<div className="sidebar">
+				<div className="logo-container">
 					<IFLogo focusedBackground />
 					<Divider sx={{ margin: '26px 0 22px 0' }} />
 				</div>
 
-				<List sx={{ margin: '0 16px 0 32px' }}>
+				<List>
 					{['Dashboard', 'Tables', 'Billing', 'RTL'].map((text, index) => (
 						<ListItem key={text} disablePadding>
-							<ListItemButton
-								selected={text === 'Dashboard'}
-								disableGutters
-								sx={{
-									margin: '0px 16px 6px 0px',
-									padding: '12px 16px 12px 16px',
-									borderRadius: '15px',
-									'&.Mui-selected': {
-										background: '#FFFFFF',
-										'.MuiListItemIcon-root': {
-											background: '#4FD1C5',
-											color: '#fff'
-										}
-									}
-								}}
-							>
-								<ListItemIcon
-									sx={{
-										minWidth: '30px',
-										width: '30px',
-										height: '30px',
-										background: '#fff',
-										display: 'flex',
-										alignItems: 'center',
-										justifyContent: 'center',
-										borderRadius: '12px',
-										color: '#4FD1C5'
-									}}
-								>
+							<ListItemButton selected={text === 'Dashboard'} disableGutters>
+								<ListItemIcon>
 									{index % 2 === 0 ? <Home sx={{ fontSize: '15px' }} /> : <Home sx={{ fontSize: '15px' }} />}
 								</ListItemIcon>
 								<ListItemText
@@ -141,39 +106,12 @@ const Dashboard = () => {
 				>
 					ACCOUNT PAGES
 				</Typography>
-				<List sx={{ margin: '0 16px 0 32px' }}>
+				<List>
 					{['Profile', 'Sign in', 'Sign up'].map((text, index) => (
-						<ListItem key={text} disablePadding>
-							<ListItemButton
-								selected={text === 'Dashboard'}
-								disableGutters
-								sx={{
-									margin: '0px 16px 6px 0px',
-									padding: '12px 16px 12px 16px',
-									borderRadius: '15px',
-									'&.Mui-selected': {
-										background: '#FFFFFF',
-										'.MuiListItemIcon-root': {
-											background: '#4FD1C5',
-											color: '#fff'
-										}
-									}
-								}}
-							>
-								<ListItemIcon
-									sx={{
-										minWidth: '30px',
-										width: '30px',
-										height: '30px',
-										background: '#fff',
-										display: 'flex',
-										alignItems: 'center',
-										justifyContent: 'center',
-										borderRadius: '12px',
-										color: '#4FD1C5'
-									}}
-								>
-									{index % 2 === 0 ? <Home sx={{ fontSize: '15px' }} /> : <Home sx={{ fontSize: '15px' }} />}
+						<ListItem key={index} disablePadding>
+							<ListItemButton selected={text === 'Dashboard'} disableGutters>
+								<ListItemIcon>
+									<Home />
 								</ListItemIcon>
 								<ListItemText
 									primary={text}
@@ -186,23 +124,9 @@ const Dashboard = () => {
 					))}
 				</List>
 
-				<Card sx={{ borderRadius: '16px', margin: '0px 12px 200px 36px', backgroundImage: `url(${Docs})` }}>
-					<CardContent
-						sx={{ background: 'transparent', height: '138px', paddingBottom: 'unset !important', marginBottom: '16px' }}
-					>
-						<IconButton
-							sx={{
-								minWidth: '30px',
-								width: '30px',
-								height: '30px',
-								background: '#fff',
-								display: 'flex',
-								alignItems: 'center',
-								justifyContent: 'center',
-								borderRadius: '12px',
-								color: '#4FD1C5'
-							}}
-						>
+				<Card>
+					<CardContent>
+						<IconButton>
 							<Home sx={{ fontSize: '15px' }} />
 						</IconButton>
 						<Typography
@@ -222,34 +146,21 @@ const Dashboard = () => {
 				</Card>
 			</div>
 
-			<div
-				style={{
-					height: '100%',
-					background: '#F8F9FA',
-					position: 'fixed',
-					display: 'block',
-					left: 'auto',
-					top: 0,
-					right: 0,
-					padding: '32px',
-					overflow: 'auto',
-					marginLeft: '266px'
-				}}
-			>
-				<div className="header" style={{ marginLeft: '16px', display: 'flex', justifyContent: 'space-between' }}>
+			<div className="content">
+				<div className="header">
 					<div>
 						<Breadcrumbs aria-label="breadcrumb" sx={{}}>
-							<Link underline="hover" color="inherit" href="/">
+							<IFLink color="inherit" href="/">
 								Pages
-							</Link>
-							<Link underline="hover" color="text.primary" href="/material-ui/getting-started/installation/">
+							</IFLink>
+							<IFLink color="text.primary" href="/material-ui/getting-started/installation/">
 								Dashboard
-							</Link>
+							</IFLink>
 						</Breadcrumbs>
 						<Typography variant="body1">Dashboard</Typography>
 					</div>
 
-					<div className="header-right" style={{ display: 'inline-flex', alignItems: 'center' }}>
+					<div className="header-right">
 						<IFTextField
 							placeholder="Type here..."
 							textFieldProps={{
@@ -263,41 +174,20 @@ const Dashboard = () => {
 							}}
 							sx={{ marginRight: '18px' }}
 						/>
-						<Person
-							sx={{
-								fontSize: '22px'
-							}}
-						/>
-						<Link
-							variant="body1"
-							sx={{
-								marginLeft: '4px',
-								marginRight: '20px'
-							}}
-							href="/signin"
-						>
+						<Person />
+						<IFLink variant="body1" sx={{ marginLeft: '4px', marginRight: '20px', color: '#718096' }} href="/signin">
 							Sign in
-						</Link>
-						<Settings
-							sx={{
-								fontSize: '22px',
-								marginRight: '20px'
-							}}
-						/>
-						<Notifications
-							sx={{
-								fontSize: '22px',
-								marginRight: '28px'
-							}}
-						/>
+						</IFLink>
+						<Settings sx={{ marginRight: '20px' }} />
+						<Notifications sx={{ marginRight: '28px' }} />
 					</div>
 				</div>
 
 				<Grid container spacing={3}>
-					{dashboardList.map(({ title, icon, total, percentage }) => {
+					{dashboardList.map(({ title, icon, total, percentage }, index) => {
 						const OptionIcon: React.ElementType<any> = icon
 						return (
-							<Grid item xs>
+							<Grid item xs key={index}>
 								<Card sx={{ marginTop: '66px', borderRadius: '16px', height: '80px' }}>
 									<CardContent sx={{ padding: '18px 20px', display: 'flex', justifyContent: 'space-between' }}>
 										<div>
@@ -326,28 +216,8 @@ const Dashboard = () => {
 											</div>
 										</div>
 
-										<IconButton
-											aria-label="add an alarm"
-											sx={{
-												color: '#fff',
-												borderRadius: '4px',
-												border: '1px solid transparent',
-												background: '#4FD1C5',
-												width: '45px',
-												height: '45px',
-												'&:not(:last-of-type)': {
-													marginRight: '16px'
-												},
-												[`.${touchRippleClasses.root}`]: {
-													display: 'none'
-												}
-											}}
-										>
-											<OptionIcon
-												sx={{
-													fontSize: '22px'
-												}}
-											/>
+										<IconButton>
+											<OptionIcon />
 										</IconButton>
 									</CardContent>
 								</Card>
@@ -356,6 +226,7 @@ const Dashboard = () => {
 					})}
 				</Grid>
 
+				{/* Article row */}
 				<Grid container spacing={3}>
 					<Grid item xs={7}>
 						<Card sx={{ marginTop: '66px', borderRadius: '16px', height: '290px' }}>
@@ -414,7 +285,7 @@ const Dashboard = () => {
 					</Grid>
 				</Grid>
 
-				{/* Graph's row */}
+				{/* Graphs row */}
 				<Grid container spacing={3}>
 					<Grid item xs={5}>
 						<Card sx={{ marginTop: '66px', borderRadius: '16px', height: '80px' }}>
@@ -477,6 +348,7 @@ const Dashboard = () => {
 					</Grid>
 				</Grid>
 
+				{/* Table row */}
 				<Grid container spacing={3}>
 					<Grid item xs={8}>
 						<Card sx={{ marginTop: '66px', borderRadius: '16px', height: '80px' }}>
@@ -541,8 +413,127 @@ const Dashboard = () => {
 
 				<Footer noMargin />
 			</div>
-		</div>
+		</StyledDashboard>
 	)
 }
 
 export default Dashboard
+
+const StyledDashboard = styled('div')(() => ({
+	'.sidebar': {
+		background: '#F8F9FA',
+		width: '266px',
+		position: 'fixed',
+		left: 0,
+		top: 0,
+		height: '100vh',
+		overflow: 'auto',
+
+		'.logo-container': {
+			padding: '44px 26px 0px 42px'
+		},
+
+		[`.${listClasses.root}`]: {
+			margin: '0 16px 0 32px',
+
+			[`.${listItemButtonClasses.root}`]: {
+				margin: '0px 16px 6px 0px',
+				padding: '12px 16px 12px 16px',
+				borderRadius: '15px',
+				'&.Mui-selected': {
+					background: '#FFFFFF',
+					'.MuiListItemIcon-root': {
+						background: '#4FD1C5',
+						color: '#fff'
+					}
+				}
+			},
+
+			[`.${listItemIconClasses.root}`]: {
+				minWidth: '30px',
+				width: '30px',
+				height: '30px',
+				background: '#fff',
+				display: 'flex',
+				alignItems: 'center',
+				justifyContent: 'center',
+				borderRadius: '12px',
+				color: '#4FD1C5',
+
+				'& svg': {
+					fontSize: '15px'
+				}
+			}
+		},
+
+		[`.${cardClasses.root}`]: {
+			borderRadius: '16px',
+			margin: '0px 12px 200px 36px',
+			backgroundImage: `url(${Docs})`,
+
+			[`.${cardContentClasses.root}`]: {
+				background: 'transparent',
+				height: '138px',
+				paddingBottom: 'unset !important',
+				marginBottom: '16px'
+			},
+
+			[`.${iconButtonClasses.root}`]: {
+				minWidth: '30px',
+				width: '30px',
+				height: '30px',
+				background: '#fff',
+				display: 'flex',
+				alignItems: 'center',
+				justifyContent: 'center',
+				borderRadius: '12px',
+				color: '#4FD1C5'
+			}
+		}
+	},
+
+	'.content': {
+		height: '100%',
+		background: '#F8F9FA',
+		position: 'fixed',
+		display: 'block',
+		left: 'auto',
+		top: 0,
+		right: 0,
+		padding: '32px',
+		overflow: 'auto',
+		marginLeft: '266px',
+
+		'.header': {
+			marginLeft: '16px',
+			display: 'flex',
+			justifyContent: 'space-between',
+
+			'.header-right': {
+				display: 'inline-flex',
+				alignItems: 'center',
+
+				'& svg': {
+					fontSize: '22px'
+				}
+			}
+		},
+		[`.${iconButtonClasses.root}`]: {
+			color: '#fff',
+			borderRadius: '4px',
+			border: '1px solid transparent',
+			background: '#4FD1C5',
+			width: '45px',
+			height: '45px',
+			'&:not(:last-of-type)': {
+				marginRight: '16px'
+			},
+			[`.${touchRippleClasses.root}`]: {
+				display: 'none'
+			},
+			'& svg': {
+				fontSize: '22px'
+			}
+		}
+	}
+}))
