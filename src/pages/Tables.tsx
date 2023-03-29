@@ -1,9 +1,20 @@
 import Footer from '../components/Footer'
+import IFHeader from '../components/IFHeader'
+import IFSideBar from '../components/IFSideBar'
 
 const Tables = () => {
 	return (
 		<div>
-			<Footer />
+			<IFSideBar />
+			<div
+				style={{
+					marginLeft: '266px',
+					padding: '32px'
+				}}
+			>
+				<IFHeader title="Tables" />
+				<Footer noMargin />
+			</div>
 		</div>
 	)
 }
