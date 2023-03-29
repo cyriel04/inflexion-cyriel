@@ -13,8 +13,8 @@ import {
 } from '@mui/material'
 import { Apple, FacebookOutlined, Google } from '@mui/icons-material'
 
-import Footer from '../components/Footer'
-import Navigation from '../components/Navigation'
+import Footer from '../components/IFFooter'
+import Navigation from '../components/IFNavigation'
 import IFButton from '../components/IFButton'
 import Banner from '../assets/banner.svg'
 import IFSwitch from '../components/IFSwitch'
@@ -79,7 +79,9 @@ const SignUp = () => {
 							<FormControlLabel control={<IFSwitch />} label="Remember me" sx={{ marginLeft: 'unset' }} />
 						</FormControl>
 
-						<IFButton sx={{ width: '100%', margin: '36px 0px 22px 0px' }}>SIGN UP</IFButton>
+						<IFButton sx={{ width: '100%', margin: '36px 0px 22px 0px' }} href="/signin">
+							SIGN UP
+						</IFButton>
 
 						<Typography variant="body2" sx={{ color: '#A0AEC0' }}>
 							Already have an account?{' '}

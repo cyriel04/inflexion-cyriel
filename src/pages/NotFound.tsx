@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material'
 
-import Navigation from '../components/Navigation'
+import Navigation from '../components/IFNavigation'
 
 const NotFound = () => {
 	return (

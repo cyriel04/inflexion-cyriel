@@ -30,7 +30,7 @@ const links = [
 	}
 ]
 
-const Navigation = ({ focusedBackground = false }) => {
+const IFNavigation = ({ focusedBackground = false }) => {
 	return (
 		<StyledNavigation focusedBackground={focusedBackground}>
 			<div className="navigation-content">
@@ -58,7 +58,7 @@ const Navigation = ({ focusedBackground = false }) => {
 	)
 }
 
-export default Navigation
+export default IFNavigation
 
 const StyledNavigation = styled('div')<any>(({ focusedBackground }: any) => ({
 	top: 0,

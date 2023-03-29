@@ -1,7 +1,7 @@
 import { Card, CardContent, Grid, IconButton, iconButtonClasses, styled, touchRippleClasses, Typography } from '@mui/material'
 import { AccountBalanceWallet, Description, Language, ShoppingCart } from '@mui/icons-material'
 
-import Footer from '../components/Footer'
+import Footer from '../components/IFFooter'
 import IFSideBar from '../components/IFSideBar'
 import IFHeader from '../components/IFHeader'
 

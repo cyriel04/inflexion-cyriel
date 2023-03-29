@@ -1,6 +1,6 @@
 import { Link, linkClasses, styled, Typography } from '@mui/material'
 
-const Footer = ({ noMargin = false }) => {
+const IFFooter = ({ noMargin = false }) => {
 	return (
 		<StyledFooter noMargin={noMargin}>
 			<div className="footer-content">
@@ -18,7 +18,7 @@ const Footer = ({ noMargin = false }) => {
 	)
 }
 
-export default Footer
+export default IFFooter
 
 const StyledFooter = styled('div')<any>(({ noMargin }: any) => ({
 	padding: '64px 0px',

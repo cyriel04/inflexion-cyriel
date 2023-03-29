@@ -1,7 +1,7 @@
 import { FormControl, FormControlLabel, Link, styled, Typography } from '@mui/material'
 
-import Footer from '../components/Footer'
-import Navigation from '../components/Navigation'
+import Footer from '../components/IFFooter'
+import Navigation from '../components/IFNavigation'
 import Chakra from '../assets/chakra.svg'
 import IFTextField from '../components/IFTextField'
 import IFSwitch from '../components/IFSwitch'
@@ -30,7 +30,9 @@ const SignIn = () => {
 					<FormControlLabel control={<IFSwitch />} label="Remember me" sx={{ marginLeft: 'unset' }} />
 				</FormControl>
 
-				<IFButton sx={{ width: '350px', margin: '36px 0px 22px 0px' }}>SIGN IN</IFButton>
+				<IFButton sx={{ width: '350px', margin: '36px 0px 22px 0px' }} href="/">
+					SIGN IN
+				</IFButton>
 
 				<Typography variant="body2" sx={{ color: '#A0AEC0' }}>
 					Don't have an account?{' '}

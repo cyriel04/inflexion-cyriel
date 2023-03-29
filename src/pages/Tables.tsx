@@ -1,4 +1,4 @@
-import Footer from '../components/Footer'
+import Footer from '../components/IFFooter'
 import IFHeader from '../components/IFHeader'
 import IFSideBar from '../components/IFSideBar'
 
