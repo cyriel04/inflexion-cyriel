@@ -36,15 +36,13 @@ const Navigation = ({ focusedBackground = false }) => {
 			<div className="navigation-content">
 				<IFLogo focusedBackground={focusedBackground} />
 				<div className="navigation-links">
-					{links.map(({ label, icon, link }: { label: string; icon: any; link: string }) => {
+					{links.map(({ label, icon, link }: { label: string; icon: any; link: string }, index) => {
 						const LinkIcon: React.ElementType<any> = icon
 						return (
-							<>
-								<div className="navigation-link">
-									<SvgIcon viewBox="0 0 12 12">{<LinkIcon />}</SvgIcon>
-									<Link href={link}>{label}</Link>
-								</div>
-							</>
+							<div className="navigation-link" key={index}>
+								<SvgIcon viewBox="0 0 12 12">{<LinkIcon />}</SvgIcon>
+								<Link href={link}>{label}</Link>
+							</div>
 						)
 					})}
 				</div>
