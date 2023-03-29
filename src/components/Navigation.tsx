@@ -1,4 +1,4 @@
-import { Link, linkClasses, styled, SvgIcon, svgIconClasses, Typography } from '@mui/material'
+import { Link, linkClasses, styled, SvgIcon, svgIconClasses } from '@mui/material'
 
 import IFButton from './IFButton'
 import { ReactComponent as Dashboard } from '../assets/dash.svg'

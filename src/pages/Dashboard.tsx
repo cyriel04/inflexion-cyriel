@@ -97,9 +97,9 @@ const Dashboard = () => {
 									margin: '0px 16px 6px 0px',
 									padding: '12px 16px 12px 16px',
 									borderRadius: '15px',
-									['&.Mui-selected']: {
+									'&.Mui-selected': {
 										background: '#FFFFFF',
-										['.MuiListItemIcon-root']: {
+										'.MuiListItemIcon-root': {
 											background: '#4FD1C5',
 											color: '#fff'
 										}
@@ -151,9 +151,9 @@ const Dashboard = () => {
 									margin: '0px 16px 6px 0px',
 									padding: '12px 16px 12px 16px',
 									borderRadius: '15px',
-									['&.Mui-selected']: {
+									'&.Mui-selected': {
 										background: '#FFFFFF',
-										['.MuiListItemIcon-root']: {
+										'.MuiListItemIcon-root': {
 											background: '#4FD1C5',
 											color: '#fff'
 										}

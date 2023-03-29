@@ -1,6 +1,6 @@
 import { styled, Switch } from '@mui/material'
 
-const IFSwitch: React.FC = ({}) => {
+const IFSwitch: React.FC = () => {
 	return <StyledSwitch />
 }
 

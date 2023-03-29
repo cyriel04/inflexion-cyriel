@@ -55,7 +55,7 @@ const SignUp = () => {
 
 export default SignUp
 
-const StyledSignUp = styled('div')<any>(({}) => ({
+const StyledSignUp = styled('div')<any>(() => ({
 	'.content': {
 		display: 'flex',
 		flexDirection: 'column',
