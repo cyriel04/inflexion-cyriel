@@ -1,10 +1,11 @@
 import { styled, SvgIcon, svgIconClasses, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 import { ReactComponent as Logo } from '../assets/logo-creative-tim-black.svg'
 
 const IFLogo = (props: any) => {
 	return (
-		<StyledLogo {...props}>
+		<StyledLogo to="/" {...props}>
 			<SvgIcon>{<Logo />}</SvgIcon>
 			<Typography className="navigation-title">VANDAL INDUSTRIES</Typography>
 		</StyledLogo>
@@ -13,10 +14,13 @@ const IFLogo = (props: any) => {
 
 export default IFLogo
 
-const StyledLogo = styled('div')<any>(({ focusedBackground }: any) => ({
+const StyledLogo = styled(Link, {
+	shouldForwardProp: (prop) => prop !== 'focusedBackground'
+})<any>(({ focusedBackground }: any) => ({
 	display: 'flex',
-	cursor: 'default',
+	cursor: 'pointer',
 	color: `${focusedBackground ? '#2D3748' : '#ffffff'}`,
+	textDecoration: 'none',
 
 	'.navigation-title': {
 		fontSize: '14px',
