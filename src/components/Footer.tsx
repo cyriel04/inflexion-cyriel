@@ -1,11 +1,11 @@
 import { Link, linkClasses, styled, Typography } from '@mui/material'
 
-const Footer = () => {
+const Footer = ({ noMargin = false }) => {
 	return (
-		<StyledFooter>
+		<StyledFooter noMargin={noMargin}>
 			<div className="footer-content">
 				<Typography>
-					© 2022, Made with ❤️ by <span className="company">Tek torch</span> for a better web
+					© 2023, Made with ❤️ by <span className="company">Tek torch</span> for a better web
 				</Typography>
 				<div className="footer-links">
 					<Link href="#">About Us</Link>
@@ -20,10 +20,11 @@ const Footer = () => {
 
 export default Footer
 
-const StyledFooter = styled('div')(() => ({
-	padding: '64px',
-	margin: '0px auto',
-	width: '980px',
+const StyledFooter = styled('div')<any>(({ noMargin }: any) => ({
+	padding: '64px 0px',
+	bottom: 0,
+	margin: noMargin ? 'unset' : '0px auto',
+	width: noMargin ? '100%' : '980px',
 
 	'@media (max-width: 600px)': {
 		display: 'none'

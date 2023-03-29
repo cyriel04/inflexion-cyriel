@@ -5,7 +5,7 @@ import { ReactComponent as Dashboard } from '../assets/dash.svg'
 import { ReactComponent as Profile } from '../assets/profile.svg'
 import { ReactComponent as SignUp } from '../assets/signup.svg'
 import { ReactComponent as SignIn } from '../assets/signin.svg'
-import { ReactComponent as Logo } from '../assets/logo-creative-tim-black.svg'
+import IFLogo from './IFLogo'
 
 const links = [
 	{
@@ -34,10 +34,7 @@ const Navigation = ({ focusedBackground = false }) => {
 	return (
 		<StyledNavigation focusedBackground={focusedBackground}>
 			<div className="navigation-content">
-				<div style={{ display: 'flex', cursor: 'default' }}>
-					<SvgIcon>{<Logo />}</SvgIcon>
-					<Typography className="navigation-title">VANDAL INDUSTRIES</Typography>
-				</div>
+				<IFLogo focusedBackground={focusedBackground} />
 				<div className="navigation-links">
 					{links.map(({ label, icon }: { label: string; icon: any }) => {
 						const LinkIcon: React.ElementType<any> = icon
@@ -90,18 +87,6 @@ const StyledNavigation = styled('div')<any>(({ focusedBackground }: any) => ({
 		alignItems: 'center',
 		color: `${focusedBackground ? '#2D3748' : '#ffffff'}`,
 
-		'.navigation-title': {
-			fontSize: '14px',
-			fontWeight: '700',
-			marginLeft: '12px'
-		},
-
-		[` .${svgIconClasses.root}`]: {
-			[`& svg`]: {
-				stroke: focusedBackground && '#2D3748'
-			}
-		},
-
 		'.navigation-links': {
 			display: 'inline-flex',
 			flexDirection: 'row',
@@ -128,7 +113,11 @@ const StyledNavigation = styled('div')<any>(({ focusedBackground }: any) => ({
 				[` .${svgIconClasses.root}`]: {
 					width: '12px',
 					height: '12px',
-					marginRight: '4px'
+					marginRight: '4px',
+
+					[`& svg`]: {
+						stroke: focusedBackground && '#2D3748'
+					}
 				}
 			}
 		}

@@ -4,7 +4,7 @@ import SignUp from './pages/SignUp'
 
 function App() {
 	return (
-		<div className="App" style={{ height: '90vh' }}>
+		<div className="App">
 			{/* <SignIn /> */}
 			{/* <SignUp /> */}
 			<Dashboard />

@@ -1,17 +1,20 @@
 import { FormControl, FormLabel, outlinedInputClasses, TextField } from '@mui/material'
 
-const IFTextField = ({ props }: any) => {
+const IFTextField = ({ textFieldProps, ...props }: any) => {
+	console.log(props, 'test')
+	console.log(textFieldProps, 'test')
 	return (
 		<FormControl sx={{ width: '100%', maxWidth: '350px', marginBottom: '24px' }} {...props}>
-			<FormLabel sx={{ textAlign: 'left', marginBottom: '6px' }}>Name</FormLabel>
+			{props?.label && <FormLabel sx={{ textAlign: 'left', marginBottom: '6px' }}>{props?.label}</FormLabel>}
 			<TextField
 				id="standard-size-normal"
-				placeholder="Your full name"
+				placeholder={props?.placeholder}
 				sx={{
 					[`.${outlinedInputClasses.root}`]: {
 						borderRadius: '16px'
 					}
 				}}
+				{...textFieldProps}
 			/>
 		</FormControl>
 	)

@@ -23,8 +23,8 @@ const SignUp = () => {
 					Enter your email and password to sign in
 				</Typography>
 				<br />
-				<IFTextField />
-				<IFTextField />
+				<IFTextField label="Email" />
+				<IFTextField label="Password" />
 
 				<FormControl sx={{ display: 'flex' }}>
 					<FormControlLabel control={<IFSwitch />} label="Remember me" sx={{ marginLeft: 'unset' }} />
