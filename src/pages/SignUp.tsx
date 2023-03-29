@@ -57,10 +57,10 @@ const SignUp = () => {
 							Register with
 						</Typography>
 						<div className="options">
-							{loginOptions.map(({ icon }) => {
+							{loginOptions.map(({ icon }, index) => {
 								const OptionIcon: React.ElementType<any> = icon
 								return (
-									<IconButton>
+									<IconButton key={index}>
 										<OptionIcon />
 									</IconButton>
 								)
