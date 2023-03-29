@@ -30,6 +30,8 @@ import {
 import Footer from '../components/Footer'
 import IFLogo from '../components/IFLogo'
 import IFTextField from '../components/IFTextField'
+import IFButton from '../components/IFButton'
+import Docs from '../assets/docs-bg.svg'
 
 const dashboardList = [
 	{
@@ -184,16 +186,38 @@ const Dashboard = () => {
 					))}
 				</List>
 
-				<Card sx={{ borderRadius: '16px', height: '170px', margin: '40px 12px 200px 36px', display: 'inline-block' }}>
-					<CardContent sx={{ padding: '18px 0px 18px 20px', display: 'flex', justifyContent: 'space-between' }}>
-						<div>
-							<Typography sx={{ fontSize: 12, fontWeight: 700, color: '#A0AEC0' }} color="text.secondary" gutterBottom>
-								Built by developers
-							</Typography>
-							<Typography sx={{ fontSize: 18, fontWeight: 700, marginRight: '4px' }} color="text.secondary" gutterBottom>
-								Purity UI Dashboard
-							</Typography>
-						</div>
+				<Card sx={{ borderRadius: '16px', margin: '0px 12px 200px 36px', backgroundImage: `url(${Docs})` }}>
+					<CardContent
+						sx={{ background: 'transparent', height: '138px', paddingBottom: 'unset !important', marginBottom: '16px' }}
+					>
+						<IconButton
+							sx={{
+								minWidth: '30px',
+								width: '30px',
+								height: '30px',
+								background: '#fff',
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center',
+								borderRadius: '12px',
+								color: '#4FD1C5'
+							}}
+						>
+							<Home sx={{ fontSize: '15px' }} />
+						</IconButton>
+						<Typography
+							sx={{ fontSize: 18, fontWeight: 700, marginTop: '12px', marginBottom: 'unset', color: '#fff' }}
+							color="text.secondary"
+							gutterBottom
+						>
+							Need help?
+						</Typography>
+						<Typography sx={{ fontSize: 12, fontWeight: 700, color: '#fff' }} color="text.secondary" gutterBottom>
+							Please check our docs
+						</Typography>
+						<IFButton sx={{ width: '100%', marginTop: '8px' }} background="#fff" sentiment="#2D3748">
+							DOCUMENTATION
+						</IFButton>
 					</CardContent>
 				</Card>
 			</div>
@@ -203,13 +227,13 @@ const Dashboard = () => {
 					height: '100%',
 					background: '#F8F9FA',
 					position: 'fixed',
-					width: 'calc(100% - 300px)',
 					display: 'block',
 					left: 'auto',
 					top: 0,
 					right: 0,
 					padding: '32px',
-					overflow: 'auto'
+					overflow: 'auto',
+					marginLeft: '266px'
 				}}
 			>
 				<div className="header" style={{ marginLeft: '16px', display: 'flex', justifyContent: 'space-between' }}>
@@ -244,15 +268,16 @@ const Dashboard = () => {
 								fontSize: '22px'
 							}}
 						/>
-						<Typography
+						<Link
 							variant="body1"
 							sx={{
 								marginLeft: '4px',
 								marginRight: '20px'
 							}}
+							href="/signin"
 						>
 							Sign in
-						</Typography>
+						</Link>
 						<Settings
 							sx={{
 								fontSize: '22px',
@@ -333,7 +358,7 @@ const Dashboard = () => {
 
 				<Grid container spacing={3}>
 					<Grid item xs={7}>
-						<Card sx={{ marginTop: '66px', borderRadius: '16px', height: '80px' }}>
+						<Card sx={{ marginTop: '66px', borderRadius: '16px', height: '290px' }}>
 							<CardContent sx={{ padding: '18px 20px', display: 'flex', justifyContent: 'space-between' }}>
 								<div>
 									<Typography
@@ -344,17 +369,13 @@ const Dashboard = () => {
 										Built by developers
 									</Typography>
 									<Typography
-										sx={{ fontSize: 18, marginBottom: '22px', fontWeight: 700, marginRight: '4px' }}
+										sx={{ fontSize: 18, fontWeight: 700, marginRight: '4px' }}
 										color="text.secondary"
 										gutterBottom
 									>
 										Purity UI Dashboard
 									</Typography>
-									<Typography
-										sx={{ fontSize: 14, marginBottom: '22px', fontWeight: 700, color: '#48BB78' }}
-										color="text.secondary"
-										gutterBottom
-									>
+									<Typography sx={{ fontSize: 14, marginBottom: '22px', fontWeight: 700, color: '#A0AEC0' }} gutterBottom>
 										From colors, cards, typography to complex elements, you will find the full documentation.
 									</Typography>
 								</div>
@@ -363,29 +384,29 @@ const Dashboard = () => {
 					</Grid>
 
 					<Grid item xs={5}>
-						<Card sx={{ marginTop: '66px', borderRadius: '16px', height: '80px' }}>
-							<CardContent sx={{ padding: '18px 20px', display: 'flex', justifyContent: 'space-between' }}>
+						<Card sx={{ marginTop: '66px', borderRadius: '16px', height: '290px' }}>
+							<CardContent
+								sx={{
+									padding: '17px',
+									display: 'flex',
+									justifyContent: 'space-between'
+								}}
+							>
 								<div>
 									<Typography
-										sx={{ fontSize: 12, fontWeight: 700, color: '#A0AEC0' }}
+										sx={{ fontSize: 18, fontWeight: 700, marginRight: '4px', color: '#2D3748' }}
 										color="text.secondary"
 										gutterBottom
 									>
-										Built by developers
+										Work with the Rockets
 									</Typography>
 									<Typography
-										sx={{ fontSize: 18, marginBottom: '22px', fontWeight: 700, marginRight: '4px' }}
+										sx={{ fontSize: 12, fontWeight: 700, color: '#2D3748' }}
 										color="text.secondary"
 										gutterBottom
 									>
-										Purity UI Dashboard
-									</Typography>
-									<Typography
-										sx={{ fontSize: 14, marginBottom: '22px', fontWeight: 700, color: '#48BB78' }}
-										color="text.secondary"
-										gutterBottom
-									>
-										From colors, cards, typography to complex elements, you will find the full documentation.
+										Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the
+										opportunity first.
 									</Typography>
 								</div>
 							</CardContent>

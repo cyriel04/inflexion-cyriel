@@ -11,22 +11,22 @@ const links = [
 	{
 		label: 'DASHBOARD',
 		icon: Dashboard,
-		link: '#'
+		link: '/'
 	},
 	{
 		label: 'PROFILE',
 		icon: Profile,
-		link: '#'
+		link: '/profile'
 	},
 	{
 		label: 'SIGN UP',
 		icon: SignUp,
-		link: '#'
+		link: '/signup'
 	},
 	{
 		label: 'SIGN IN',
 		icon: SignIn,
-		link: '#'
+		link: '/signin'
 	}
 ]
 
@@ -36,13 +36,13 @@ const Navigation = ({ focusedBackground = false }) => {
 			<div className="navigation-content">
 				<IFLogo focusedBackground={focusedBackground} />
 				<div className="navigation-links">
-					{links.map(({ label, icon }: { label: string; icon: any }) => {
+					{links.map(({ label, icon, link }: { label: string; icon: any; link: string }) => {
 						const LinkIcon: React.ElementType<any> = icon
 						return (
 							<>
 								<div className="navigation-link">
 									<SvgIcon viewBox="0 0 12 12">{<LinkIcon />}</SvgIcon>
-									<Link href="#">{label}</Link>
+									<Link href={link}>{label}</Link>
 								</div>
 							</>
 						)
