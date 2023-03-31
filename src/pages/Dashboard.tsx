@@ -4,6 +4,7 @@ import { AccountBalanceWallet, Description, Language, ShoppingCart } from '@mui/
 import Footer from '../components/IFFooter'
 import IFSideBar from '../components/IFSideBar'
 import IFHeader from '../components/IFHeader'
+import IFProjectsTable from '../components/IFProjectsTable'
 
 const dashboardList = [
 	{
@@ -35,6 +36,25 @@ const dashboardList = [
 		percentage: '+8%'
 	}
 ]
+
+function createDataProjects(companies: string, budget?: string, status?: string, completion?: number) {
+	return { companies, budget, status, completion }
+}
+const rowsProjects = [
+	createDataProjects('Chakra Soft UI Version', '$14,000', 'Working', 60),
+	createDataProjects('Add Progress Track', '$3,000', 'Canceled', 10),
+	createDataProjects('Fix Platform Errors', 'Not set', 'Done', 100),
+	createDataProjects('Launch our Mobile App', '$32,000', 'Done', 100),
+	createDataProjects('Add the New Pricing Page', '$400', 'Working', 25),
+	createDataProjects('Redesign New Online Shop', '$400', 'Working', 25)
+]
+const rowsProjectsTitle = [
+	createDataProjects('COMPANIES'),
+	createDataProjects('BUDGET'),
+	createDataProjects('STATUS'),
+	createDataProjects('COMPLETION')
+]
+
 const Dashboard = () => {
 	return (
 		<StyledDashboard>
@@ -148,29 +168,18 @@ const Dashboard = () => {
 				{/* Graphs row */}
 				<Grid container spacing={3}>
 					<Grid item xs={5}>
-						<Card sx={{ marginTop: '66px', borderRadius: '16px', height: '80px' }}>
+						<Card sx={{ marginTop: '66px', borderRadius: '16px', height: '445px' }}>
 							<CardContent sx={{ padding: '18px 20px', display: 'flex', justifyContent: 'space-between' }}>
 								<div>
-									<Typography
-										sx={{ fontSize: 12, fontWeight: 700, color: '#A0AEC0' }}
-										color="text.secondary"
-										gutterBottom
-									>
-										Built by developers
-									</Typography>
 									<Typography
 										sx={{ fontSize: 18, marginBottom: '22px', fontWeight: 700, marginRight: '4px' }}
 										color="text.secondary"
 										gutterBottom
 									>
-										Purity UI Dashboard
+										Active Users
 									</Typography>
-									<Typography
-										sx={{ fontSize: 14, marginBottom: '22px', fontWeight: 700, color: '#48BB78' }}
-										color="text.secondary"
-										gutterBottom
-									>
-										From colors, cards, typography to complex elements, you will find the full documentation.
+									<Typography sx={{ fontSize: 14, marginBottom: '22px', fontWeight: 700, color: '#A0AEC0' }} gutterBottom>
+										(+23) than last week
 									</Typography>
 								</div>
 							</CardContent>
@@ -178,29 +187,18 @@ const Dashboard = () => {
 					</Grid>
 
 					<Grid item xs={7}>
-						<Card sx={{ marginTop: '66px', borderRadius: '16px', height: '80px' }}>
+						<Card sx={{ marginTop: '66px', borderRadius: '16px', height: '445px' }}>
 							<CardContent sx={{ padding: '18px 20px', display: 'flex', justifyContent: 'space-between' }}>
 								<div>
-									<Typography
-										sx={{ fontSize: 12, fontWeight: 700, color: '#A0AEC0' }}
-										color="text.secondary"
-										gutterBottom
-									>
-										Built by developers
-									</Typography>
 									<Typography
 										sx={{ fontSize: 18, marginBottom: '22px', fontWeight: 700, marginRight: '4px' }}
 										color="text.secondary"
 										gutterBottom
 									>
-										Purity UI Dashboard
+										Sales overview
 									</Typography>
-									<Typography
-										sx={{ fontSize: 14, marginBottom: '22px', fontWeight: 700, color: '#48BB78' }}
-										color="text.secondary"
-										gutterBottom
-									>
-										From colors, cards, typography to complex elements, you will find the full documentation.
+									<Typography sx={{ fontSize: 14, marginBottom: '22px', fontWeight: 700, color: '#A0AEC0' }} gutterBottom>
+										(+5) more in 2021
 									</Typography>
 								</div>
 							</CardContent>
@@ -211,59 +209,28 @@ const Dashboard = () => {
 				{/* Table row */}
 				<Grid container spacing={3}>
 					<Grid item xs={8}>
-						<Card sx={{ marginTop: '66px', borderRadius: '16px', height: '80px' }}>
-							<CardContent sx={{ padding: '18px 20px', display: 'flex', justifyContent: 'space-between' }}>
-								<div>
-									<Typography
-										sx={{ fontSize: 12, fontWeight: 700, color: '#A0AEC0' }}
-										color="text.secondary"
-										gutterBottom
-									>
-										Built by developers
-									</Typography>
-									<Typography
-										sx={{ fontSize: 18, marginBottom: '22px', fontWeight: 700, marginRight: '4px' }}
-										color="text.secondary"
-										gutterBottom
-									>
-										Purity UI Dashboard
-									</Typography>
-									<Typography
-										sx={{ fontSize: 14, marginBottom: '22px', fontWeight: 700, color: '#48BB78' }}
-										color="text.secondary"
-										gutterBottom
-									>
-										From colors, cards, typography to complex elements, you will find the full documentation.
-									</Typography>
-								</div>
-							</CardContent>
+						<Card sx={{ marginTop: '66px', borderRadius: '16px' }}>
+							<IFProjectsTable header={rowsProjectsTitle} body={rowsProjects} />
 						</Card>
 					</Grid>
 
 					<Grid item xs={4}>
-						<Card sx={{ marginTop: '66px', borderRadius: '16px', height: '80px' }}>
+						<Card sx={{ marginTop: '66px', borderRadius: '16px', height: '520px' }}>
 							<CardContent sx={{ padding: '18px 20px', display: 'flex', justifyContent: 'space-between' }}>
 								<div>
 									<Typography
-										sx={{ fontSize: 12, fontWeight: 700, color: '#A0AEC0' }}
+										sx={{ fontSize: 18, fontWeight: 700, marginRight: '4px' }}
 										color="text.secondary"
 										gutterBottom
 									>
-										Built by developers
+										Orders overview
 									</Typography>
 									<Typography
-										sx={{ fontSize: 18, marginBottom: '22px', fontWeight: 700, marginRight: '4px' }}
+										sx={{ fontSize: 14, fontWeight: 700, color: '#48BB78' }}
 										color="text.secondary"
 										gutterBottom
 									>
-										Purity UI Dashboard
-									</Typography>
-									<Typography
-										sx={{ fontSize: 14, marginBottom: '22px', fontWeight: 700, color: '#48BB78' }}
-										color="text.secondary"
-										gutterBottom
-									>
-										From colors, cards, typography to complex elements, you will find the full documentation.
+										+30% this month
 									</Typography>
 								</div>
 							</CardContent>
