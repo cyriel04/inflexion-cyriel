@@ -72,14 +72,22 @@ const IFSideBar = () => {
 				ACCOUNT PAGES
 			</Typography>
 			<List>
-				{['Profile', 'Sign in', 'Sign up'].map((text, index) => (
+				{[
+					{ label: 'Profile', link: '/profile' },
+					{ label: 'Sign in', link: '/signin' },
+					{ label: 'Sign up', link: '/signup' }
+				].map(({ label, link }, index) => (
 					<ListItem key={index} disablePadding>
-						<ListItemButton selected={text === 'Dashboard'} disableGutters>
+						<ListItemButton selected={label === 'Dashboard'} disableGutters href={link}>
 							<ListItemIcon>
 								<Home />
 							</ListItemIcon>
 							<ListItemText
-								primary={text}
+								primary={
+									<IFLink component="div" sx={{ color: '#A0AEC0', fontSize: '12px' }}>
+										{label}
+									</IFLink>
+								}
 								disableTypography
 								sx={{
 									marginLeft: '12px',
