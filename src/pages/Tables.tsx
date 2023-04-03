@@ -133,6 +133,8 @@ const Tables = () => {
 export default Tables
 
 const StyledTables = styled('div')(() => ({
+	background: '#F8F9FA',
+
 	'.content': {
 		marginTop: '26px',
 
