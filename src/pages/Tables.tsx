@@ -18,7 +18,7 @@ import {
 	typographyClasses
 } from '@mui/material'
 
-import Footer from '../components/IFFooter'
+import IFFooter from '../components/IFFooter'
 import IFHeader from '../components/IFHeader'
 import IFLink from '../components/IFLink'
 import IFProjectsTable from '../components/IFProjectsTable'
@@ -124,7 +124,7 @@ const Tables = () => {
 					<br />
 					<IFProjectsTable header={rowsProjectsTitle} body={rowsProjects} />
 				</div>
-				<Footer noMargin />
+				<IFFooter noMargin />
 			</div>
 		</StyledTables>
 	)

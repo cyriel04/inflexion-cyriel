@@ -116,7 +116,12 @@ const IFSideBar = () => {
 					<Typography sx={{ fontSize: 12, fontWeight: 700, color: '#fff' }} color="text.secondary" gutterBottom>
 						Please check our docs
 					</Typography>
-					<IFButton sx={{ width: '100%', marginTop: '8px' }} background="#fff" sentiment="#2D3748">
+					<IFButton
+						sx={{ width: '100%', marginTop: '8px' }}
+						background="#fff"
+						sentiment="#2D3748"
+						href="https://www.figma.com/file/77KSljXaeIceOffvBZDDF4/Figma-to-React-sample?node-id=0%3A1&t=nWn42NvajvIh5CmM-0"
+					>
 						DOCUMENTATION
 					</IFButton>
 				</CardContent>

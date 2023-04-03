@@ -1,7 +1,7 @@
 import { Card, CardContent, Grid, IconButton, iconButtonClasses, styled, touchRippleClasses, Typography } from '@mui/material'
 import { AccountBalanceWallet, Description, Language, ShoppingCart } from '@mui/icons-material'
 
-import Footer from '../components/IFFooter'
+import IFFooter from '../components/IFFooter'
 import IFSideBar from '../components/IFSideBar'
 import IFHeader from '../components/IFHeader'
 import IFProjectsTable from '../components/IFProjectsTable'
@@ -238,7 +238,7 @@ const Dashboard = () => {
 					</Grid>
 				</Grid>
 
-				<Footer noMargin />
+				<IFFooter noMargin />
 			</div>
 		</StyledDashboard>
 	)
@@ -248,15 +248,8 @@ export default Dashboard
 
 const StyledDashboard = styled('div')(() => ({
 	'.content': {
-		height: '100%',
 		background: '#F8F9FA',
-		position: 'fixed',
-		display: 'block',
-		left: 'auto',
-		top: 0,
-		right: 0,
 		padding: '32px',
-		overflow: 'auto',
 		marginLeft: '266px',
 
 		[`.${iconButtonClasses.root}`]: {

@@ -1,8 +1,8 @@
 import { Link, linkClasses, styled, Typography } from '@mui/material'
 
-const IFFooter = ({ noMargin = false }) => {
+const IFFooter = ({ noMargin = false, ...props }) => {
 	return (
-		<StyledFooter noMargin={noMargin}>
+		<StyledFooter noMargin={noMargin} {...props}>
 			<div className="footer-content">
 				<Typography>
 					© 2023, Made with ❤️ by <span className="company">Tek torch</span> for a better web
@@ -21,7 +21,7 @@ const IFFooter = ({ noMargin = false }) => {
 export default IFFooter
 
 const StyledFooter = styled('div')<any>(({ noMargin }: any) => ({
-	padding: '64px 0px',
+	padding: noMargin ? '64px 0px 0px 0px' : '64px 0px 32px 0px',
 	bottom: 0,
 	margin: noMargin ? 'unset' : '0px auto',
 	width: noMargin ? '100%' : '980px',
