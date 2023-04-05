@@ -1,0 +1,926 @@
+//APP.TSX start
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
+import Dashboard from './pages/Dashboard'
+import NotFound from './pages/NotFound'
+import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
+import Tables from './pages/Tables'
+
+function App() {
+	return (
+		<div className="App">
+			<BrowserRouter>
+				<Routes>
+					<Route index path="/" element={<Dashboard />} />
+					<Route path="signin" element={<SignIn />} />
+					<Route path="signup" element={<SignUp />} />
+					<Route path="tables" element={<Tables />} />
+					<Route path="*" element={<NotFound />} />
+				</Routes>
+			</BrowserRouter>
+		</div>
+	)
+}
+
+export default App
+//APP.TSX end
+
+//DASHBOARD PAGE start
+import { Card, Grid, IconButton, iconButtonClasses, styled, touchRippleClasses, Typography } from '@mui/material'
+import { AccountBalanceWallet, Description, Language, ShoppingCart } from '@mui/icons-material'
+
+import IFFooter from '../components/IFFooter'
+import IFSideBar from '../components/IFSideBar'
+import IFHeader from '../components/IFHeader'
+import IFProjectsTable from '../components/IFProjectsTable'
+import IFCard from '../components/IFCard'
+
+const dashboardList = [
+	{
+		title: 'Today’s Money',
+		label: 'balance',
+		icon: AccountBalanceWallet,
+		total: '$53,000',
+		percentage: '+55%'
+	},
+	{
+		title: 'Today’s Users',
+		label: 'language',
+		icon: Language,
+		total: '2,300',
+		percentage: '+5%'
+	},
+	{
+		title: 'New Clients',
+		label: 'description',
+		icon: Description,
+		total: '+3,052',
+		percentage: '-14%'
+	},
+	{
+		title: 'Total Sales',
+		label: 'cart',
+		icon: ShoppingCart,
+		total: '$173,000',
+		percentage: '+8%'
+	}
+]
+
+function createDataProjects(companies: string, budget?: string, status?: string, completion?: number) {
+	return { companies, budget, status, completion }
+}
+const rowsProjects = [
+	createDataProjects('Chakra Soft UI Version', '$14,000', 'Working', 60),
+	createDataProjects('Add Progress Track', '$3,000', 'Canceled', 10),
+	createDataProjects('Fix Platform Errors', 'Not set', 'Done', 100),
+	createDataProjects('Launch our Mobile App', '$32,000', 'Done', 100),
+	createDataProjects('Add the New Pricing Page', '$400', 'Working', 25),
+	createDataProjects('Redesign New Online Shop', '$400', 'Working', 25)
+]
+const rowsProjectsTitle = [
+	createDataProjects('COMPANIES'),
+	createDataProjects('BUDGET'),
+	createDataProjects('STATUS'),
+	createDataProjects('COMPLETION')
+]
+
+const Dashboard = () => {
+	return (
+		<StyledDashboard>
+			<IFSideBar />
+
+			<div className="content">
+				<IFHeader title="Dashboard" />
+
+				<Grid container spacing={3}>
+					{dashboardList.map(({ title, icon, total, percentage }, index) => {
+						const OptionIcon: React.ElementType<any> = icon
+						return (
+							<Grid item xs key={index}>
+								<IFCard sx={{ height: '80px' }}>
+									<div>
+										<Typography sx={{ fontSize: 12, fontWeight: 700, color: '#A0AEC0' }} gutterBottom>
+											{title}
+										</Typography>
+										<div className="figures" style={{ display: 'flex', alignItems: 'center' }}>
+											<Typography
+												sx={{ fontSize: 18, marginBottom: '22px', fontWeight: 700, marginRight: '4px' }}
+												gutterBottom
+											>
+												{total}
+											</Typography>
+											<Typography
+												sx={{ fontSize: 14, marginBottom: '22px', fontWeight: 700, color: '#48BB78' }}
+												gutterBottom
+											>
+												{percentage}
+											</Typography>
+										</div>
+									</div>
+									<IconButton>
+										<OptionIcon />
+									</IconButton>
+								</IFCard>
+							</Grid>
+						)
+					})}
+				</Grid>
+
+				{/* Article row */}
+				<Grid container spacing={3}>
+					<Grid item xs={7}>
+						<IFCard sx={{ height: '290px' }}>
+							<div>
+								<Typography sx={{ fontSize: 12, fontWeight: 700, color: '#A0AEC0' }} gutterBottom>
+									Built by developers
+								</Typography>
+								<Typography sx={{ fontSize: 18, fontWeight: 700, marginRight: '4px' }} gutterBottom>
+									Purity UI Dashboard
+								</Typography>
+								<Typography sx={{ fontSize: 14, marginBottom: '22px', fontWeight: 700, color: '#A0AEC0' }} gutterBottom>
+									From colors, cards, typography to complex elements, you will find the full documentation.
+								</Typography>
+							</div>
+						</IFCard>
+					</Grid>
+
+					<Grid item xs={5}>
+						<IFCard sx={{ height: '290px' }}>
+							<div>
+								<Typography sx={{ fontSize: 18, fontWeight: 700, marginRight: '4px', color: '#2D3748' }} gutterBottom>
+									Work with the Rockets
+								</Typography>
+								<Typography sx={{ fontSize: 12, fontWeight: 700, color: '#2D3748' }} gutterBottom>
+									Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity
+									first.
+								</Typography>
+							</div>
+						</IFCard>
+					</Grid>
+				</Grid>
+
+				{/* Graphs row */}
+				<Grid container spacing={3}>
+					<Grid item xs={5}>
+						<IFCard sx={{ height: '445px' }}>
+							<div>
+								<Typography sx={{ fontSize: 18, marginBottom: '22px', fontWeight: 700, marginRight: '4px' }} gutterBottom>
+									Active Users
+								</Typography>
+								<Typography sx={{ fontSize: 14, marginBottom: '22px', fontWeight: 700, color: '#A0AEC0' }} gutterBottom>
+									(+23) than last week
+								</Typography>
+							</div>
+						</IFCard>
+					</Grid>
+
+					<Grid item xs={7}>
+						<IFCard sx={{ height: '445px' }}>
+							<div>
+								<Typography sx={{ fontSize: 18, marginBottom: '22px', fontWeight: 700, marginRight: '4px' }} gutterBottom>
+									Sales overview
+								</Typography>
+								<Typography sx={{ fontSize: 14, marginBottom: '22px', fontWeight: 700, color: '#A0AEC0' }} gutterBottom>
+									(+5) more in 2021
+								</Typography>
+							</div>
+						</IFCard>
+					</Grid>
+				</Grid>
+
+				{/* Table row */}
+				<Grid container spacing={3}>
+					<Grid item xs={8}>
+						<Card sx={{ marginTop: '66px', borderRadius: '16px' }}>
+							<IFProjectsTable header={rowsProjectsTitle} body={rowsProjects} />
+						</Card>
+					</Grid>
+
+					<Grid item xs={4}>
+						<IFCard sx={{ height: '520px' }}>
+							<div>
+								<Typography sx={{ fontSize: 18, fontWeight: 700, marginRight: '4px' }} gutterBottom>
+									Orders overview
+								</Typography>
+								<Typography sx={{ fontSize: 14, fontWeight: 700, color: '#48BB78' }} gutterBottom>
+									+30% this month
+								</Typography>
+							</div>
+						</IFCard>
+					</Grid>
+				</Grid>
+
+				<IFFooter noMargin />
+			</div>
+		</StyledDashboard>
+	)
+}
+
+export default Dashboard
+const StyledDashboard = styled('div')(() => ({
+	'.content': {
+		background: '#F8F9FA',
+		padding: '32px',
+		marginLeft: '266px',
+
+		[`.${iconButtonClasses.root}`]: {
+			color: '#fff',
+			borderRadius: '4px',
+			border: '1px solid transparent',
+			background: '#4FD1C5',
+			width: '45px',
+			height: '45px',
+			'&:not(:last-of-type)': {
+				marginRight: '16px'
+			},
+			[`.${touchRippleClasses.root}`]: {
+				display: 'none'
+			},
+			'& svg': {
+				fontSize: '22px'
+			}
+		}
+	}
+}))
+//DASHBOARD PAGE end
+
+//TABLES PAGE start
+import {
+	Avatar,
+	avatarClasses,
+	Chip,
+	chipClasses,
+	Paper,
+	styled,
+	Table,
+	TableBody,
+	tableBodyClasses,
+	TableCell,
+	tableCellClasses,
+	TableContainer,
+	TableHead,
+	tableHeadClasses,
+	TableRow,
+	Typography,
+	typographyClasses
+} from '@mui/material'
+
+import IFFooter from '../components/IFFooter'
+import IFHeader from '../components/IFHeader'
+import IFLink from '../components/IFLink'
+import IFProjectsTable from '../components/IFProjectsTable'
+import IFSideBar from '../components/IFSideBar'
+
+function createData(name: string, email?: string, position?: string, department?: string, status?: boolean, date?: string) {
+	return { name, email, position, department, status, date }
+}
+const rows = [
+	createData('Elaine Benes', 'elaine@vandelay.com', 'Manager', 'Organization', true, '14/06/21'),
+	createData('Sidra Holland', 'sidra@vandelay.com', 'Manager', 'Organization', true, '14/06/21'),
+	createData('Cosmo Kramer', 'kramer@vandelay.com', 'Manager', 'Organization', true, '14/06/21'),
+	createData('Newman', 'newman@usps.com', 'Manager', 'Organization', true, '14/06/21'),
+	createData('Frank Cost', 'frank@vandelay.com', 'Manager', 'Organization', false, '14/06/21'),
+	createData('Art VanDelay', 'art.ie@vandelay.com', 'Manager', 'Organization', false, '14/06/21')
+]
+const rowsTitle = [createData('AUTHOR'), createData('FUNCTION'), createData('STATUS'), createData('EMPLOYED')]
+
+function createDataProjects(companies: string, budget?: string, status?: string, completion?: number) {
+	return { companies, budget, status, completion }
+}
+const rowsProjects = [
+	createDataProjects('Software Import/Export', '$14,000', 'Working', 60),
+	createDataProjects('Add Progress Track', '$3,000', 'Canceled', 10),
+	createDataProjects('Fix Platform Errors', 'Not set', 'Done', 100),
+	createDataProjects('Launch our Mobile App', '$32,000', 'Done', 100),
+	createDataProjects('Add the New Pricing Page', '$400', 'Working', 25)
+]
+const rowsProjectsTitle = [
+	createDataProjects('COMPANIES'),
+	createDataProjects('BUDGET'),
+	createDataProjects('STATUS'),
+	createDataProjects('COMPLETION')
+]
+
+const Tables = () => {
+	return (
+		<StyledTables>
+			<IFSideBar />
+			<div
+				style={{
+					marginLeft: '266px',
+					padding: '32px'
+				}}
+			>
+				<IFHeader title="Tables" />
+
+				<div className="content">
+					<TableContainer component={Paper}>
+						<Typography className="table-title">Authors Table</Typography>
+						<Table sx={{ width: 'calc(100% - 32px)', margin: '0px 16px' }}>
+							<TableHead>
+								<TableRow component="tr">
+									{rowsTitle.map((row) => (
+										<TableCell key={row.name} component="th" variant="head" scope="row">
+											{row.name}
+										</TableCell>
+									))}
+									<TableCell component="th" align="left">
+										{''}
+									</TableCell>
+								</TableRow>
+							</TableHead>
+							<TableBody>
+								{rows.map((row) => (
+									<TableRow component="tr" key={row.name}>
+										<TableCell component="td" scope="row" style={{ width: '400px' }}>
+											<div className="name-cell">
+												<Avatar
+													alt={row.name}
+													src="https://4.bp.blogspot.com/-pvKOdlBpL2A/WsN8akhjfYI/AAAAAAAAYRQ/LByqrluY6gI63caRHdPo8z4FPXOPOwECQCLcBGAs/s640/Eren_Jaeger_%2528Anime%2529_character_image.png"
+												/>
+												<span className="details">
+													{row.name}
+													<br />
+													<span className="email">{row.email}</span>
+												</span>
+											</div>
+										</TableCell>
+										<TableCell component="td">
+											{row.position}
+											<br />
+											<span className="department">{row.department}</span>
+										</TableCell>
+										<TableCell component="td">
+											<Chip
+												size="small"
+												label={row.status ? 'Online' : 'Offline'}
+												className={`${row.status ? 'online' : 'offline'}`}
+											/>
+										</TableCell>
+										<TableCell component="td">{row.date}</TableCell>
+										<TableCell component="td" className="action">
+											<IFLink>Edit</IFLink>
+										</TableCell>
+									</TableRow>
+								))}
+							</TableBody>
+						</Table>
+					</TableContainer>
+
+					<br />
+					<br />
+					<IFProjectsTable header={rowsProjectsTitle} body={rowsProjects} />
+				</div>
+				<IFFooter noMargin />
+			</div>
+		</StyledTables>
+	)
+}
+
+export default Tables
+
+const StyledTables = styled('div')(() => ({
+	background: '#F8F9FA',
+
+	'.content': {
+		marginTop: '26px',
+
+		'.table-title': {
+			marginTop: '20px',
+			marginLeft: '16px',
+			fontSize: '18px',
+			fontWeight: 700
+		},
+		'.table-description': {
+			marginTop: '6px',
+			marginLeft: '16px',
+			fontSize: '14px',
+			fontWeight: 700,
+			color: '#A0AEC0',
+
+			display: 'flex',
+			alignItems: 'center',
+
+			'& svg': {
+				color: '#68D391',
+				fontSize: '12px',
+				marginRight: '6px'
+			}
+		}
+	},
+
+	[`.${tableHeadClasses.root}`]: {
+		[`.${tableCellClasses.root}`]: {
+			color: '#A0AEC0',
+			fontSize: '10px'
+		}
+	},
+
+	[`.${tableBodyClasses.root}`]: {
+		[`.${tableCellClasses.root}`]: {
+			'.name-cell': {
+				display: 'flex',
+				alignItems: 'center',
+				gap: '14px',
+				[`.${avatarClasses.root}`]: {
+					borderRadius: '14px',
+					width: '40px',
+					height: '40px'
+				}
+			},
+
+			fontSize: '14px',
+			'.department, .email': {
+				color: '#A0AEC0',
+				fontWeight: 400
+			},
+
+			[`.${chipClasses.root}`]: {
+				borderRadius: '8px',
+				fontSize: '14px',
+				color: '#FFFFFF',
+				'&.online': {
+					background: '#48BB78'
+				},
+				'&.offline': {
+					background: '#CBD5E0'
+				}
+			},
+
+			'&.action': {
+				[`.${typographyClasses.root}`]: {
+					color: '#718096',
+					fontWeight: 700,
+					fontSize: '12px'
+				}
+			}
+		}
+	},
+
+	[`.${tableCellClasses.root}`]: {
+		paddingLeft: 0,
+		fontWeight: 700
+	}
+}))
+//TABLES PAGE end
+
+//SIGN UP PAGE start
+import {
+	Card,
+	cardClasses,
+	CardContent,
+	cardContentClasses,
+	FormControl,
+	FormControlLabel,
+	IconButton,
+	iconButtonClasses,
+	styled,
+	touchRippleClasses,
+	Typography
+} from '@mui/material'
+import { Apple, FacebookOutlined, Google } from '@mui/icons-material'
+
+import Footer from '../components/IFFooter'
+import Navigation from '../components/IFNavigation'
+import IFButton from '../components/IFButton'
+import Banner from '../assets/banner.svg'
+import IFSwitch from '../components/IFSwitch'
+import IFTextField from '../components/IFTextField'
+import IFLink from '../components/IFLink'
+
+const loginOptions = [
+	{
+		label: 'facebook',
+		icon: FacebookOutlined
+	},
+	{
+		label: 'apple',
+		icon: Apple
+	},
+	{
+		label: 'google',
+		icon: Google
+	}
+]
+
+const SignUp = () => {
+	return (
+		<StyledSignup>
+			<Navigation focusedBackground={false} />
+			<div className="banner-container">
+				<img src={Banner} alt="banner" className="banner" />
+			</div>
+			<div className="content">
+				<Typography variant="h5" sx={{ marginBottom: '10px', fontWeight: 700 }}>
+					Welcome!
+				</Typography>
+				<Typography variant="body2" sx={{ width: '330px', display: 'inline-flex', justifyContent: 'center' }}>
+					Use these awesome forms to login or create new account in your project for free.
+				</Typography>
+
+				<Card>
+					<CardContent>
+						<Typography sx={{ fontSize: 18, marginBottom: '22px', fontWeight: 700 }} gutterBottom>
+							Register with
+						</Typography>
+						<div className="options">
+							{loginOptions.map(({ icon }, index) => {
+								const OptionIcon: React.ElementType<any> = icon
+								return (
+									<IconButton key={index}>
+										<OptionIcon />
+									</IconButton>
+								)
+							})}
+						</div>
+
+						<Typography variant="h5" component="div" sx={{ margin: '20px 0px 16px 0px', color: '#A0AEC0' }}>
+							or
+						</Typography>
+
+						<IFTextField label="Name" placeholder="Your full name" />
+						<IFTextField label="Email" placeholder="Your email address" />
+						<IFTextField label="Password" placeholder="Your password" />
+
+						<FormControl sx={{ display: 'flex' }}>
+							<FormControlLabel control={<IFSwitch />} label="Remember me" sx={{ marginLeft: 'unset' }} />
+						</FormControl>
+
+						<IFButton sx={{ width: '100%', margin: '36px 0px 22px 0px' }} href="/signin">
+							SIGN UP
+						</IFButton>
+
+						<Typography variant="body2" sx={{ color: '#A0AEC0' }}>
+							Already have an account?{' '}
+							<IFLink
+								href="/signin"
+								sx={{
+									color: '#4FD1C5'
+								}}
+							>
+								Sign in
+							</IFLink>
+						</Typography>
+					</CardContent>
+				</Card>
+			</div>
+			<Footer />
+		</StyledSignup>
+	)
+}
+
+export default SignUp
+
+const StyledSignup = styled('div')(() => ({
+	textAlign: 'center',
+	'.banner-container, .options': {
+		display: 'flex',
+		justifyContent: 'center',
+
+		'.banner': {
+			objectFit: 'cover',
+			position: 'absolute',
+			top: '24px',
+			width: `calc(100% - 48px)`,
+			height: '520px',
+			zIndex: -1,
+			borderRadius: '16px'
+		}
+	},
+	'.content': {
+		display: 'inline-block',
+		color: '#fff'
+	},
+
+	[`.${cardClasses.root}`]: {
+		minWidth: 460,
+		width: '460px',
+		marginTop: '66px',
+		borderRadius: '16px',
+
+		[`.${cardContentClasses.root}`]: {
+			paddingBottom: '46px !important',
+			padding: '46px 52px',
+
+			[`.${iconButtonClasses.root}`]: {
+				color: '#2D3748',
+				borderRadius: '4px',
+				border: '1px solid #E2E8F0',
+				width: '75px',
+				height: '75px',
+				'&:not(:last-of-type)': {
+					marginRight: '16px'
+				},
+				[`.${touchRippleClasses.root}`]: {
+					display: 'none'
+				},
+
+				'& svg': {
+					fontSize: '32px'
+				}
+			}
+		}
+	}
+}))
+//SIGN UP PAGE end
+
+//BUTTON component start
+import { Button, ButtonProps, styled, touchRippleClasses } from '@mui/material'
+
+const IFButton: React.FC<ButtonProps & { sentiment?: string; background?: string }> = ({
+	children,
+	sentiment = '#ffffff',
+	background = '#4FD1C5',
+	...props
+}: any) => {
+	return (
+		<StyledButton variant="contained" sentiment={sentiment} background={background} {...props}>
+			{children}
+		</StyledButton>
+	)
+}
+
+export default IFButton
+
+const StyledButton = styled(Button)<ButtonProps & { sentiment?: string; background?: string }>(({ sentiment, background }: any) => ({
+	borderRadius: '34.5px',
+	padding: '10px 30px',
+	height: '36px',
+	width: '150px',
+	textTransform: 'capitalize',
+	fontSize: '10px',
+	fontWeight: '700',
+
+	background: background,
+	color: sentiment,
+
+	[`&:hover`]: {
+		background: `${background}ff`
+	},
+
+	[`.${touchRippleClasses.root}`]: {
+		display: 'none'
+	}
+}))
+//BUTTON component end
+
+//LINK component start
+import { Link, styled } from '@mui/material'
+
+const IFLink = ({ children, ...props }: any) => {
+	return <StyledLink {...props}>{children}</StyledLink>
+}
+
+export default IFLink
+
+const StyledLink = styled(Link)(() => ({
+	fontWeight: 700,
+
+	[`&:not(:hover)`]: {
+		textDecoration: 'none'
+	}
+}))
+//LINK component end
+
+//HEADER component start
+import { Notifications, Person, Search, Settings } from '@mui/icons-material'
+import { Breadcrumbs, breadcrumbsClasses, InputAdornment, inputBaseClasses, styled, Typography, typographyClasses } from '@mui/material'
+
+import IFLink from './IFLink'
+import IFTextField from './IFTextField'
+
+const IFHeader = ({ title }: any) => {
+	return (
+		<StyledHeader>
+			<div>
+				<Breadcrumbs aria-label="breadcrumb">
+					<IFLink color="inherit" href="/">
+						Pages
+					</IFLink>
+					<IFLink color="text.primary" href="/">
+						{title}
+					</IFLink>
+				</Breadcrumbs>
+				<Typography variant="body1" sx={{ fontSize: '14px', fontWeight: 700 }}>
+					{title}
+				</Typography>
+			</div>
+
+			<div className="header-right">
+				<IFTextField
+					placeholder="Type here..."
+					textFieldProps={{
+						InputProps: {
+							startAdornment: (
+								<InputAdornment position="start">
+									<Search />
+								</InputAdornment>
+							)
+						}
+					}}
+					sx={{ marginRight: '18px' }}
+				/>
+				<Person />
+				<IFLink variant="body1" sx={{ marginLeft: '4px', marginRight: '20px', color: '#718096' }} href="/signin">
+					Sign in
+				</IFLink>
+				<Settings sx={{ marginRight: '20px' }} />
+				<Notifications sx={{ marginRight: '28px' }} />
+			</div>
+		</StyledHeader>
+	)
+}
+
+export default IFHeader
+
+const StyledHeader = styled('div')(() => ({
+	marginLeft: '16px',
+	display: 'flex',
+	justifyContent: 'space-between',
+
+	[`.${breadcrumbsClasses.root}`]: {
+		[`.${typographyClasses.root}, .${breadcrumbsClasses.separator}`]: {
+			fontSize: '12px',
+			fontWeight: 400
+		}
+	},
+	'.header-right': {
+		display: 'inline-flex',
+		alignItems: 'center',
+
+		'& svg': {
+			fontSize: '22px',
+			color: '#718096'
+		},
+		[`.${inputBaseClasses.root}`]: {
+			height: '40px'
+		}
+	}
+}))
+//HEADER component end
+
+//NAV component start
+import { Link, linkClasses, styled, SvgIcon, svgIconClasses } from '@mui/material'
+
+import IFButton from './IFButton'
+import { ReactComponent as Dashboard } from '../assets/dash.svg'
+import { ReactComponent as Profile } from '../assets/profile.svg'
+import { ReactComponent as SignUp } from '../assets/signup.svg'
+import { ReactComponent as SignIn } from '../assets/signin.svg'
+import IFLogo from './IFLogo'
+
+const links = [
+	{
+		label: 'DASHBOARD',
+		icon: Dashboard,
+		link: '/'
+	},
+	{
+		label: 'PROFILE',
+		icon: Profile,
+		link: '/profile'
+	},
+	{
+		label: 'SIGN UP',
+		icon: SignUp,
+		link: '/signup'
+	},
+	{
+		label: 'SIGN IN',
+		icon: SignIn,
+		link: '/signin'
+	}
+]
+
+const IFNavigation = ({ focusedBackground = false }) => {
+	return (
+		<StyledNavigation focusedBackground={focusedBackground}>
+			<div className="navigation-content">
+				<IFLogo focusedBackground={focusedBackground} />
+				<div className="navigation-links">
+					{links.map(({ label, icon, link }: { label: string; icon: any; link: string }, index) => {
+						const LinkIcon: React.ElementType<any> = icon
+						return (
+							<div className="navigation-link" key={index}>
+								<SvgIcon viewBox="0 0 12 12">{<LinkIcon />}</SvgIcon>
+								<Link href={link}>{label}</Link>
+							</div>
+						)
+					})}
+				</div>
+				<IFButton
+					variant="contained"
+					sentiment={focusedBackground ? '#ffffff' : '#2D3748'}
+					background={focusedBackground ? 'linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%)' : '#ffffff'}
+				>
+					Free Download
+				</IFButton>
+			</div>
+		</StyledNavigation>
+	)
+}
+
+export default IFNavigation
+
+const StyledNavigation = styled('div')<any>(({ focusedBackground }: any) => ({
+	top: 0,
+	position: 'relative',
+	margin: '68px auto',
+	zIndex: 1,
+	background: focusedBackground && '#ffffffb6',
+	width: '980px',
+
+	borderRadius: '16px',
+
+	boxShadow: focusedBackground && '0px 7px 23px rgba(0, 0, 0, 0.05)',
+	backdropFilter: focusedBackground && 'blur(10.5px)',
+
+	'@media (max-width: 600px)': {
+		display: 'none'
+	},
+
+	'.navigation-content': {
+		padding: '20px 24px',
+
+		display: 'flex',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		color: `${focusedBackground ? '#2D3748' : '#ffffff'}`,
+
+		'.navigation-links': {
+			display: 'inline-flex',
+			flexDirection: 'row',
+
+			fontSize: '10px',
+			fontWeight: '700',
+
+			'.navigation-link': {
+				display: 'flex',
+				alignItems: 'center',
+
+				'&:not(:last-of-type)': {
+					marginRight: '30px'
+				},
+
+				[`.${linkClasses.root}`]: {
+					color: `${focusedBackground ? '#2D3748' : '#fff'}`,
+
+					[`&:not(:hover)`]: {
+						textDecoration: 'none'
+					}
+				},
+
+				[` .${svgIconClasses.root}`]: {
+					width: '12px',
+					height: '12px',
+					marginRight: '4px',
+
+					[`& svg`]: {
+						stroke: focusedBackground && '#2D3748'
+					}
+				}
+			}
+		}
+	}
+}))
+//NAV component end
+
+//LOGO component start
+import { styled, SvgIcon, svgIconClasses, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
+
+import { ReactComponent as Logo } from '../assets/logo-creative-tim-black.svg'
+
+const IFLogo = (props: any) => {
+	return (
+		<StyledLogo to="/" {...props}>
+			<SvgIcon>{<Logo />}</SvgIcon>
+			<Typography className="navigation-title">VANDAL INDUSTRIES</Typography>
+		</StyledLogo>
+	)
+}
+
+export default IFLogo
+
+const StyledLogo = styled(Link, {
+	shouldForwardProp: (prop) => prop !== 'focusedBackground'
+})<any>(({ focusedBackground }: any) => ({
+	display: 'flex',
+	cursor: 'pointer',
+	color: `${focusedBackground ? '#2D3748' : '#ffffff'}`,
+	textDecoration: 'none',
+
+	'.navigation-title': {
+		fontSize: '14px',
+		fontWeight: '700',
+		marginLeft: '12px'
+	},
+
+	[` .${svgIconClasses.root}`]: {
+		[`& svg`]: {
+			stroke: focusedBackground && '#2D3748'
+		}
+	}
+}))
+//LOGO component end

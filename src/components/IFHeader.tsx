@@ -12,8 +12,8 @@ const IFHeader = ({ title }: any) => {
 					<IFLink color="inherit" href="/">
 						Pages
 					</IFLink>
-					<IFLink color="text.primary" href="/material-ui/getting-started/installation/">
-						Dashboard
+					<IFLink color="text.primary" href="/">
+						{title}
 					</IFLink>
 				</Breadcrumbs>
 				<Typography variant="body1" sx={{ fontSize: '14px', fontWeight: 700 }}>
